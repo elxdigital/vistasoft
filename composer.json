@@ -1,0 +1,25 @@
+{
+  "name": "elxdigital/vista",
+  "description": "Componente de integração com Vista Software",
+  "keywords": [
+    "Vista",
+    "Imobiliária"
+  ],
+  "homepage": "https://www.ellox.com.br",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Ellox Inteligência Digital",
+      "email": "desenvolvimento@ellox.com.br",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=7.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "ElxDigital\\Vista\\": "src"
+    }
+  }
+}
