@@ -124,7 +124,7 @@ class Vista {
         if (curl_errno($ch)) {
             $this->callback = curl_error($ch);
         } else {
-            $this->callback = json_decode($result, true);
+            $this->callback = (object) json_decode($result);
         }
 
         curl_close($ch);
@@ -146,7 +146,7 @@ class Vista {
         if (curl_errno($ch)) {
             $this->callback = curl_error($ch);
         } else {
-            $this->callback = json_decode($result, true);
+            $this->callback = (object) json_decode($result);
         }
         curl_close($ch);
         return;
