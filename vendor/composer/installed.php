@@ -3,7 +3,7 @@
         'name' => 'elxdigital/vista',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '069a006939fedb0ee2558869c35d3ec6e1e70ae7',
+        'reference' => 'd41da2ad0db3db3b7494fd5f024276c799f04440',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'elxdigital/vista' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '069a006939fedb0ee2558869c35d3ec6e1e70ae7',
+            'reference' => 'd41da2ad0db3db3b7494fd5f024276c799f04440',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

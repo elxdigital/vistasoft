@@ -11,7 +11,6 @@ class Realty extends Vista {
 
     private function getFilds() {
         $this->filds = [
-            'Academia',
             'AceitaDacao',
             'AceitaFinanciamento',
             'AceitaPermuta',
@@ -30,7 +29,6 @@ class Realty extends Vista {
             'AreaPrivativa',
             'AreaTerreno',
             'AreaTotal',
-            'AreaUtil',
             'Bairro',
             'BairroComercial',
             'BanheiroSocialQtd',
@@ -46,10 +44,8 @@ class Realty extends Vista {
             'ClasseDoImovel',
             'CodigoMalote',
             'Complemento',
-            'ComplementoMigrado',
             'Construtora',
             'CorretorPrimeiroAge',
-            'Credenciado_caixa',
             'DataAtualizacao',
             'DataCadastro',
             'DataDisponibilizacao',
@@ -110,7 +106,6 @@ class Realty extends Vista {
             'Matricula',
             'MercadoLivreTipoML',
             'MesConstrucao',
-            'MetragemBox',
             'Midia',
             'Modulos',
             'Numero',
@@ -146,7 +141,6 @@ class Realty extends Vista {
             'Quadra',
             'Reajuste',
             'Referencia',
-            'ReferenciaMigrada',
             'Regiao',
             'ResponsavelReserva',
             'SaldoDivida',
@@ -233,6 +227,10 @@ class Realty extends Vista {
             'DataProntuario',
             'CodigoAgencia',
             'TotalBanheiros',
+            'ComplementoMigrado',
+            'MetragemBox',
+            'ReferenciaMigrada',
+            'Academia',
             'Caracteristicas' => [
                 'Aberturas',
                 'Adega',
@@ -415,16 +413,12 @@ class Realty extends Vista {
             ],
             'codigo' => ['Codigo'],
             'Corretor' => [
-                'Datacadastro',
-                'RG_Inscricao',
-                'RGEmissor',
-                'CPF_CGC',
-                'Nascimento',
-                'Nacionalidade',
-                'CNH',
-                'CNHExpedicao',
-                'CNHVencimento',
-                'Celular',
+                
+                
+                
+                
+                
+                
                 'Endereco',
                 'Bairro',
                 'Cidade',
@@ -441,6 +435,7 @@ class Realty extends Vista {
                 'Gerente',
                 'Empresa',
                 'Codigo',
+                'Celular',
                 'Celular1',
                 'Celular2',
                 'Corretor',
@@ -448,6 +443,10 @@ class Realty extends Vista {
                 'Equipe',
                 'Grupoacesso',
                 'Nomecompleto',
+                'Nacionalidade',
+                'CNH',
+                'CNHExpedicao',
+                'CNHVencimento',
                 'Ramal',
                 'Sexo',
                 'Exibirnosite',
@@ -472,10 +471,15 @@ class Realty extends Vista {
                 'CodigoAgencia',
                 'Agencia',
                 'CodigoEquipe',
+                'Datacadastro',
+                'RG_Inscricao',
+                'RGEmissor',
+                'CPF_CGC',
+                'Nascimento',
             ],
             'Agencia' => [
-                'Agencia',
-                'Nome',
+                
+                
                 'Bairro',
                 'Celular',
                 'Cep',
@@ -497,6 +501,8 @@ class Realty extends Vista {
                 'Rresponsavel',
                 'Uf',
                 'Site',
+                'Agencia',
+                'Nome',
             ],
             'Foto' => [
                 'Codigo',
