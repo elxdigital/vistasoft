@@ -2,16 +2,17 @@
 
 require __DIR__ . "/../vendor/autoload.php";
 
-// puxa todos os imóveis
-$realty = new \ElxDigital\Vista\Services\Realty('c9fdd79584fb8d369a6a579af1a8f681');
-$realty->setIsSandbox();
-$realty->setPagination(1, 50); 
-$realty->getPropertiesDays(5);
-var_dump($realty->getCallback());
+// puxa a listagem de campos do imóvel
+$properties = new \ElxDigital\Vista\Services\Realty('c9fdd79584fb8d369a6a579af1a8f681');
+$properties->setIsSandbox();
+$properties->getListFields();
+var_dump($properties->getCallback());
+return;
 
-// lista campos liberados dos imóveis
-//$realty->getListFields();
-//var_dump($realty->getCallback());
-
-
+// puxa a listagem de imoveis
+$properties = new \ElxDigital\Vista\Services\Realty('c9fdd79584fb8d369a6a579af1a8f681');
+$properties->setIsSandbox();
+$properties->setPagination(1, 50); 
+$properties->getProperties();
+var_dump($properties->getCallback());
 return;

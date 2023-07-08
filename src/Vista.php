@@ -109,12 +109,13 @@ class Vista {
      * ########################
      */
     protected function get() {
+
         if (empty($this->url)) {
             $this->callback = 'Selecione modo PRODUÇÃO OU MODO SANDBOX';
         }
 
         $url = 'https://' . trim($this->url) . trim($this->endPoint) . '?key=' . trim($this->apiKey) . (!empty($this->terms) ? trim($this->terms) : null) . (!empty($this->params) ? json_encode($this->params) : null);
-        
+
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -133,11 +134,16 @@ class Vista {
     }
 
     protected function post() {
-        $url = 'https://' . $this->url . $this->endPoint . '?' . json_encode($this->params);
+
+        if (empty($this->url)) {
+            $this->callback = 'Selecione modo PRODUÇÃO OU MODO SANDBOX';
+        }
+
+        $url = 'https://' . trim($this->url) . trim($this->endPoint) . '?key=' . trim($this->apiKey);
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($this->params));
+        curl_setopt($ch, CURLOPT_POSTFIELDS, 'cadastro=' . json_encode($this->params));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Accept: application/json'));
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
@@ -151,5 +157,4 @@ class Vista {
         curl_close($ch);
         return;
     }
-
 }
