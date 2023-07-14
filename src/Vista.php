@@ -156,7 +156,8 @@ class Vista {
         $result = curl_exec($ch);
 
         if (curl_errno($ch)) {
-            $this->callback = curl_error($ch);
+            $this->error = curl_error($ch);
+            $this->callback = null;
         } else {
             $this->callback = (object) json_decode($result);
         }
