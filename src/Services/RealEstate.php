@@ -11,7 +11,7 @@ class RealEstate extends Vista {
 
     /**
      * Campos padrões que puxamos via API na listagem das imobiliárias
-     * 
+     *
      * @return type
      */
     private function getFilds() {
@@ -36,7 +36,7 @@ class RealEstate extends Vista {
 
     /**
      * Busca todos os imóveis cadastrados na base
-     * 
+     *
      * @return type
      */
     public function getRealEstate() {

@@ -11,7 +11,7 @@ class Realty extends Vista {
 
     /**
      * Campos padrões que puxamos via API na listagem de imóveis
-     * 
+     *
      * @return type
      */
     private function getFilds() {
@@ -25,6 +25,8 @@ class Realty extends Vista {
             'DestaqueWeb',
             'SuperDestaqueWeb',
             'Exclusivo',
+            'Lancamento',
+            'AceitaPermuta',
             'ExibirNoSite',
             'TituloSite',
             'DescricaoWeb',
@@ -45,7 +47,11 @@ class Realty extends Vista {
             'Complemento',
             'Construtora',
             'Dormitorios',
+            'Suites',
+            'TotalBanheiros',
             'Vagas',
+            'AreaConstruida',
+            'AreaTerreno',
             'AreaTotal',
             'AreaPrivativa',
             'ValorVenda',
@@ -55,6 +61,7 @@ class Realty extends Vista {
             'URLVideo',
             'Latitude',
             'Longitude',
+            'Mobiliado',
             'CodigoAgencia',
             'CodigoCorretor',
             'Caracteristicas',
@@ -65,7 +72,7 @@ class Realty extends Vista {
 
     /**
      * Busca todo os campos disponíveis de um imóvel para usar vindo da API
-     * 
+     *
      * @return type
      */
     public function getListFields() {
@@ -75,14 +82,14 @@ class Realty extends Vista {
 
         return $return;
     }
-   
+
     /**
      * Busca todos os imóveis cadastrados na base
-     * 
-     * Informa um valor caso queira trazer a listagem dos imóveis que foram 
+     *
+     * Informa um valor caso queira trazer a listagem dos imóveis que foram
      * criados ou atualizados nos ultimos XX dias
-     * 
-     * @param int $days|null
+     *
+     * @param int $days |null
      * @return type
      */
     public function getProperties(int $days = null) {
@@ -101,7 +108,12 @@ class Realty extends Vista {
         if (!empty($days)) {
             $lastDay = date('Y-m-d', strtotime('-' . $days . ' days'));
             $day = date('Y-m-d');
-            $this->setFilter('DataAtualizacao', [$lastDay, $day]);
+            $this->setFilter('DataAtualizacao',
+                [
+                    $lastDay,
+                    $day
+                ]
+            );
         }
 
         $this->setParams($this->params);
@@ -112,7 +124,7 @@ class Realty extends Vista {
 
     /**
      * Busca as fotos do imóvel pelo código do imóvel
-     * 
+     *
      * @param string $code
      * @return type
      */
@@ -146,7 +158,7 @@ class Realty extends Vista {
 
     /**
      * Busca as fotos do empreendimento pelo código do imóvel
-     * 
+     *
      * @param string $code
      * @return type
      */

@@ -11,7 +11,7 @@ class Realtor extends Vista {
 
     /**
      * Campos padões que puxamos via API na listagem de corretores
-     * 
+     *
      * @return type
      */
     private function getFilds() {
@@ -39,7 +39,7 @@ class Realtor extends Vista {
 
     /**
      * Busca todo os campos disponíveis de um usuário para usar vindo da API
-     * 
+     *
      * @return type
      */
     public function getListFields() {
@@ -52,7 +52,7 @@ class Realtor extends Vista {
 
     /**
      * Busca todos os corretores cadastrados na base
-     * 
+     *
      * @return type
      */
     public function getRealtor() {

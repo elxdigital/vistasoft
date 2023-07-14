@@ -132,9 +132,7 @@ class Lead {
     private function str_mask(string $val, string $mask): string {
         $maskared = '';
         $k = 0;
-        for ($i = 0;
-                $i < (strlen($mask));
-                $i++) {
+        for ($i = 0; $i < (strlen($mask)); $i++) {
             if ($mask[$i] == '#') {
                 if (isset($val[$k])) {
                     $maskared .= $val[$k];

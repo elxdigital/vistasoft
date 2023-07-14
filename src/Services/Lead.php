@@ -20,10 +20,10 @@ class Lead extends Vista {
         $this->params->lead->corretor = $params->getRealtor();
         $this->params->lead->agencia = $params->getRealState();
     }
-    
+
     /**
      * Busca as fotos do empreendimento pelo código do imóvel
-     * 
+     *
      * @param string $code
      * @return type
      */
@@ -31,7 +31,7 @@ class Lead extends Vista {
 
         $this->setEndPoint('lead');
         $this->setParams($this->params);
-        
+
         $this->post();
 
         return $this->getCallback();

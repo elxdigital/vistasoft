@@ -13,6 +13,7 @@ class Vista {
     private $endPoint;
     private $terms;
     private $callback;
+    private $error;
 
     public function __construct(string $apiKey) {
         $this->apiKey = $apiKey;
@@ -20,7 +21,7 @@ class Vista {
 
     /**
      * API setup for production
-     * 
+     *
      * @param string $urldocliente
      */
     public function setIsProduction(string $urldocliente) {
@@ -66,7 +67,7 @@ class Vista {
 
     public function setPagination(int $page, int $quantity) {
         $this->pagination = [
-            'pagina' => $page,
+            'pagina'     => $page,
             'quantidade' => $quantity
         ];
     }
@@ -103,6 +104,10 @@ class Vista {
         return $this->callback;
     }
 
+    public function getError() {
+        return $this->error;
+    }
+
     /**
      * ########################
      * ### METODO PROTEGIDO ###
@@ -123,7 +128,8 @@ class Vista {
         $result = curl_exec($ch);
 
         if (curl_errno($ch)) {
-            $this->callback = curl_error($ch);
+            $this->error = curl_error($ch);
+            $this->callback = null;
         } else {
             $this->callback = (object) json_decode($result);
         }
