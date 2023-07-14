@@ -1,3 +1,4 @@
 /nbproject/
 /vendor
-/.odea
+/.idea
+.idea/workspace.xml
