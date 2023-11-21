@@ -77,7 +77,7 @@ class Vista {
     }
 
     public function setOrder(string $fild, string $order) {
-        $this->order[] = [
+        $this->order = [
             $fild => $order
         ];
     }
@@ -87,9 +87,7 @@ class Vista {
     }
 
     public function setFilter(string $fild, array $filter) {
-        $this->filter[] = [
-            $fild => $filter
-        ];
+        $this->filter[$fild] = $filter;
         return;
     }
 
@@ -132,6 +130,7 @@ class Vista {
             $this->callback = null;
         } else {
             $this->callback = (object) json_decode($result);
+
         }
 
         curl_close($ch);
@@ -156,8 +155,7 @@ class Vista {
         $result = curl_exec($ch);
 
         if (curl_errno($ch)) {
-            $this->error = curl_error($ch);
-            $this->callback = null;
+            $this->callback = curl_error($ch);
         } else {
             $this->callback = (object) json_decode($result);
         }

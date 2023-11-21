@@ -4,20 +4,22 @@ namespace ElxDigital\Vista\Services;
 
 use \ElxDigital\Vista\Vista;
 
-class Realty extends Vista {
+class RealEstateDevelopment extends Vista {
 
     private $params;
     private $filter;
 
     /**
-     * Campos padrões que puxamos via API na listagem de imóveis
+     * Campos padrões que puxamos via API na listagem de empreedimentos
      *
      * @return type
      */
     private function getFilds() {
         $this->filds = [
             'Codigo',
-            'ApresentacaoLocalizacao',
+            'Empreendimento',
+            'DescricaoEmpreendimento',
+            'ImoCodigo',
             'CodigoEmpreendimento',
             'DataAtualizacao',
             'DataHoraAtualizacao',
@@ -62,7 +64,6 @@ class Realty extends Vista {
             'ValorIptu',
             'ValorCondominio',
             'URLVideo',
-            'PrecoSobConsulta',
             'Latitude',
             'Longitude',
             'Mobiliado',
@@ -70,15 +71,12 @@ class Realty extends Vista {
             'CodigoCorretor',
             'Caracteristicas',
             'InfraEstrutura',
-            'ResponsavelReserva',
-            'Proprietario',
-            'Tag'
         ];
         return $this->filds;
     }
 
     /**
-     * Busca todo os campos disponíveis de um imóvel para usar vindo da API
+     * Busca todo os campos disponíveis de um empreendimento para usar vindo da API
      *
      * @return type
      */
@@ -91,9 +89,9 @@ class Realty extends Vista {
     }
 
     /**
-     * Busca todos os imóveis cadastrados na base
+     * Busca todos os empreendimentos cadastrados na base
      *
-     * Informa um valor caso queira trazer a listagem dos imóveis que foram
+     * Informa um valor caso queira trazer a listagem dos empreendimentos que foram
      * criados ou atualizados nos ultimos XX dias
      *
      * @param int $days int|null
@@ -112,7 +110,7 @@ class Realty extends Vista {
             $this->params['paginacao'] = $this->getPagination();
         }
 
-        $this->setFilter('EEmpreendimento', ['!=', 'Sim']);
+        $this->setFilter('EEmpreendimento', ['!=', 'Nao']);
 
         if (!empty($days)) {
             $lastDay = date('Y-m-d', strtotime('-' . $days . ' days'));
@@ -136,75 +134,7 @@ class Realty extends Vista {
     }
 
     /**
-     * Busca todos os imóveis cadastrados na base que estão desativados
-     *
-     * Informa um valor caso queira trazer a listagem dos imóveis que foram
-     * criados ou atualizados nos ultimos XX dias
-     *
-     * @param int $days int|null
-     * @return type
-     */
-    public function getPropertiesByCode(int $code) {
-        $this->setEndPoint('imoveis/listar');
-        $this->setTerms('&showtotal=1&pesquisa=');
-        $this->params['fields'] = $this->getFilds();
-
-        if (!empty($this->getOrder())) {
-            $this->params['order'] = $this->getOrder();
-        }
-
-        if (!empty($this->getPagination())) {
-            $this->params['paginacao'] = $this->getPagination();
-        }
-
-        $this->setFilter('Codigo', [$code]);
-
-        if (!empty($this->getFilter())) {
-            $this->params['filter'] = $this->getFilter();
-        }
-
-        $this->setParams($this->params);
-        $return = $this->get();
-
-        return $return;
-    }
-
-    /**
-     * Busca todos os imóveis cadastrados na base que estão desativados
-     *
-     * Informa um valor caso queira trazer a listagem dos imóveis que foram
-     * criados ou atualizados nos ultimos XX dias
-     *
-     * @param int $days int|null
-     * @return type
-     */
-    public function getPropertiesCheck(int $code) {
-        $this->setEndPoint('imoveis/listar');
-        $this->setTerms('&showtotal=1&pesquisa=');
-        $this->params['fields'] = 'Codigo';
-
-        if (!empty($this->getOrder())) {
-            $this->params['order'] = $this->getOrder();
-        }
-
-        if (!empty($this->getPagination())) {
-            $this->params['paginacao'] = $this->getPagination();
-        }
-
-        $this->setFilter('Codigo', [$code]);
-
-        if (!empty($this->getFilter())) {
-            $this->params['filter'] = $this->getFilter();
-        }
-
-        $this->setParams($this->params);
-        $return = $this->get();
-
-        return $return;
-    }
-
-    /**
-     * Busca as fotos pelo código do imóvel
+     * Busca as fotos pelo código do empreendimento
      *
      * @param string $code
      * @return type
@@ -217,18 +147,15 @@ class Realty extends Vista {
             'Codigo',
             [
                 "Foto" => [
-                    "Ordem",
+                    "Foto",
+                    "FotoPequena",
                     "Codigo",
-                    "ImagemCodigo",
+                    "Ordem",
                     "Data",
                     "Descricao",
                     "Destaque",
-                    "ExibirNoSite",
-                    "ExibirSite",
-                    "Foto",
-                    "FotoPequena",
                     "Tipo",
-                    "Origem",
+                    "ExibirNoSite"
                 ]
             ]
         ];
@@ -240,7 +167,7 @@ class Realty extends Vista {
     }
 
     /**
-     * Busca os vídeos pelo código do imóvel
+     * Busca os vídeos pelo código do empreendimento
      *
      * @param string $code
      * @return type
@@ -274,7 +201,7 @@ class Realty extends Vista {
     }
 
     /**
-     * Busca os anexos pelo código do imóvel
+     * Busca os anexos pelo código do empreendimento
      *
      * @param string $code
      * @return type

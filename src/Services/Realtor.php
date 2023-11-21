@@ -64,6 +64,8 @@ class Realtor extends Vista {
             $this->params['order'] = $this->getOrder();
         }
 
+        $this->params['paginacao'] = $this->getPagination();
+
         $this->setParams($this->params);
         $return = $this->get();
 
